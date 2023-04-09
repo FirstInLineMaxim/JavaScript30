@@ -58,7 +58,17 @@
 
     <script>
       const audios = document.querySelectorAll('audio');
-      const keys = document.querySelectorAll('.keys');
+      const keys = document.querySelectorAll('.key');
+      for (let audio of audios) {
+        const { key } = audio.dataset;
+        for (let button of keys) {
+          const buttonkey = button.dataset.key;
+          if (buttonkey === key)
+            button.addEventListener('click', () => {
+              audio.play();
+            });
+        }
+      }
     </script>
   </body>
 </html>
